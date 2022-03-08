@@ -1,290 +1,52 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2580
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;}
-{\colortbl;\red255\green255\blue255;\red102\green151\blue104;\red115\green158\blue202;\red170\green170\blue170;
-\red193\green170\blue108;\red192\green192\blue192;\red238\green204\blue100;\red238\green238\blue238;\red158\green158\blue158;
-}
-{\*\expandedcolortbl;;\csgenericrgb\c40000\c59216\c40784;\csgenericrgb\c45098\c61961\c79216;\csgenericrgb\c66667\c66667\c66667;
-\csgenericrgb\c75686\c66667\c42353;\csgenericrgb\c75294\c75294\c75294;\csgenericrgb\c93333\c80000\c39216;\csgenericrgb\c93333\c93333\c93333;\csgenericrgb\c61961\c61961\c61961;
-}
-\margl1440\margr1440\vieww18680\viewh12080\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
+—- Tables — need to be edited
 
-\f0\fs24 \cf2 \'97- Tables \'97 need to be edited\
-\
--- TestAdvanced.Employees definition\cf0 \
-\
-\pard\pardeftab720\partightenfactor0
+-- TestAdvanced.Employees definition
 
-\f1\b \cf3 CREATE
-\f0\b0 \cf4  
-\f1\b \cf3 TABLE
-\f0\b0 \cf4  \cf5 `Employees`\cf4  (\cf0 \
-\cf4   \cf5 `id`\cf4  
-\f1\b \cf5 int
-\f0\b0 \cf4  
-\f1\b \cf3 NOT
-\f0\b0 \cf4  
-\f1\b \cf3 NULL
-\f0\b0 \cf4  
-\f1\b \cf3 AUTO_INCREMENT
-\f0\b0 \cf4  
-\f1\b \cf3 UNIQUE
-\f0\b0 \cf4 ,\cf0 \
-\cf4   \cf5 `username`\cf4  
-\f1\b \cf5 varchar
-\f0\b0 \cf4 (\cf6 30\cf4 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf4  
-\f1\b \cf3 NULL
-\f0\b0 \cf4  
-\f1\b \cf3 UNIQUE
-\f0\b0 \cf4 ,\cf0 \
-\cf4   \cf5 `password`\cf4  
-\f1\b \cf5 varchar
-\f0\b0 \cf4 (\cf6 30\cf4 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf4  
-\f1\b \cf3 NULL
-\f0\b0 \cf4 ,\cf0 \
-\cf4   \cf5 `firstName`\cf4  
-\f1\b \cf5 varchar
-\f0\b0 \cf4 (\cf6 30\cf4 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf4  
-\f1\b \cf3 NULL
-\f0\b0 \cf4 ,\cf0 \
-\cf4   \cf5 `lastName`\cf4  
-\f1\b \cf5 varchar
-\f0\b0 \cf4 (\cf6 30\cf4 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf4  
-\f1\b \cf3 NULL
-\f0\b0 \cf4 ,\cf0 \
-\cf4   \cf5 `email`\cf4  
-\f1\b \cf5 varchar
-\f0\b0 \cf4 (\cf6 30\cf4 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf4  
-\f1\b \cf3 NULL
-\f0\b0 \cf4 ,\cf0 \
-\cf4   \cf5 `DOB`\cf4  
-\f1\b \cf5 date
-\f0\b0 \cf4  
-\f1\b \cf3 NOT
-\f0\b0 \cf4  
-\f1\b \cf3 NULL
-\f0\b0 \cf4 ,\cf0 \
-\cf4   \cf5 `sex`\cf4  
-\f1\b \cf5 varchar
-\f0\b0 \cf4 (\cf6 1\cf4 ) 
-\f1\b \cf3 DEFAULT
-\f0\b0 \cf4  
-\f1\b \cf3 NULL
-\f0\b0 \cf4 ,\cf0 \
-\cf4   \cf5 `emp_authorization`\cf4  
-\f1\b \cf5 int
-\f0\b0 \cf4  
-\f1\b \cf3 NOT
-\f0\b0 \cf4  
-\f1\b \cf3 NULL
-\f0\b0 \cf4 ,\cf0 \
-\cf4   
-\f1\b \cf3 PRIMARY
-\f0\b0 \cf4  
-\f1\b \cf3 KEY
-\f0\b0 \cf4  (\cf5 `id`\cf4 ,\cf5 `username`\cf4 )\cf0 \
-\cf4 )\cf7 ;\cf2 \
-\
--- TestAdvanced.Clients definition\cf0 \
-\
+CREATE TABLE `Employees` (
+  `id` int NOT NULL AUTO_INCREMENT UNIQUE,
+  `username` varchar(30) NOT NULL UNIQUE,
+  `password` varchar(30) NOT NULL,
+  `firstName` varchar(30) NOT NULL,
+  `lastName` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `DOB` date NOT NULL,
+  `sex` varchar(1) DEFAULT NULL,
+  `emp_authorization` int NOT NULL,
+  PRIMARY KEY (`id`,`username`)
+);
 
-\f1\b \cf3 CREATE
-\f0\b0 \cf8  
-\f1\b \cf3 TABLE
-\f0\b0 \cf8  \cf5 `Clients`\cf8  (\cf0 \
-\cf8   \cf5 `id`\cf8  
-\f1\b \cf5 int
-\f0\b0 \cf8  
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8  
-\f1\b \cf3 AUTO_INCREMENT UNIQUE
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `firstName`\cf8  
-\f1\b \cf5 varchar
-\f0\b0 \cf8 (\cf6 30\cf8 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `lastName`\cf8  
-\f1\b \cf5 varchar
-\f0\b0 \cf8 (\cf6 30\cf8 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `email`\cf8  
-\f1\b \cf5 varchar
-\f0\b0 \cf8 (\cf6 30\cf8 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `DOB`\cf8  
-\f1\b \cf5 date
-\f0\b0 \cf8  
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\
-  \cf5 `street`\cf8  
-\f1\b \cf5 varchar
-\f0\b0 \cf8 (\cf6 100\cf8 )
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `city`\cf8  
-\f1\b \cf5 varchar
-\f0\b0 \cf8 (\cf6 30\cf8 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `zip`\cf8  
-\f1\b \cf5 varchar
-\f0\b0 \cf8 (\cf6 10\cf8 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `sex`\cf8  
-\f1\b \cf5 varchar
-\f0\b0 \cf8 (\cf6 1\cf8 ) 
-\f1\b \cf3 DEFAULT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\
-  \cf5 `photo`\cf8  
-\f1\b \cf5 blob 
-\f0\b0 \cf8  
-\f1\b \cf3 DEFAULT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\cf0 \
-\cf8   
-\f1\b \cf3 PRIMARY
-\f0\b0 \cf8  
-\f1\b \cf3 KEY
-\f0\b0 \cf8  (\cf5 `id`\cf8 )\cf0 \
-\cf8 )\cf7 ;\
-\
-\pard\pardeftab720\partightenfactor0
-\cf2 -- TestAdvanced.Accounts definition\cf0 \
-\
-\pard\pardeftab720\partightenfactor0
+-- TestAdvanced.Clients definition
 
-\f1\b \cf3 CREATE
-\f0\b0 \cf8  
-\f1\b \cf3 TABLE
-\f0\b0 \cf8  \cf5 `Accounts`\cf8  (\cf0 \
-\cf8   \cf5 `id`\cf8  
-\f1\b \cf5 int
-\f0\b0 \cf8  
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8  
-\f1\b \cf3 AUTO_INCREMENT UNIQUE
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `accountNumber`\cf8  
-\f1\b \cf5 varchar
-\f0\b0 \cf8 (\cf6 12\cf8 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL UNIQUE
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `PIN`\cf8  
-\f1\b \cf5 varchar
-\f0\b0 \cf8 (\cf6 4\cf8 ) 
-\f1\b \cf3 NOT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `emp_id`\cf8  
-\f1\b \cf5 int
-\f0\b0 \cf8  
-\f1\b \cf3 DEFAULT
-\f0\b0 \cf8  
-\f1\b \cf3 NULL
-\f0\b0 \cf8 ,\cf0 \
-\cf8   \cf5 `balance`\cf8  
-\f1\b \cf5 int
-\f0\b0 \cf8  
-\f1\b \cf3 DEFAULT NULL
-\f0\b0 \cf8 ,\cf0 \
-\cf8   
-\f1\b \cf3 PRIMARY
-\f0\b0 \cf8  
-\f1\b \cf3 KEY
-\f0\b0 \cf8  (\cf5 `accountNumber`\cf8 ),\cf0 \
-\cf8   
-\f1\b \cf3 CONSTRAINT
-\f0\b0 \cf8  \cf5 `accounts_ibfk_1`\cf8  
-\f1\b \cf3 FOREIGN
-\f0\b0 \cf8  
-\f1\b \cf3 KEY
-\f0\b0 \cf8  (\cf5 `emp_id`\cf8 ) 
-\f1\b \cf3 REFERENCES
-\f0\b0 \cf8  \cf5 `Employees`\cf8  (\cf5 `id`\cf8 ) 
-\f1\b \cf3 ON
-\f0\b0 \cf8  
-\f1\b \cf3 DELETE
-\f0\b0 \cf8  
-\f1\b \cf5 SET
-\f0\b0 \cf8  
-\f1\b \cf3 NULL,\
-  CONSTRAINT
-\f0\b0 \cf8  \cf5 `accounts_ibfk_2`\cf8  
-\f1\b \cf3 FOREIGN
-\f0\b0 \cf8  
-\f1\b \cf3 KEY
-\f0\b0 \cf8  (\cf5 `id`\cf8 ) 
-\f1\b \cf3 REFERENCES
-\f0\b0 \cf8  \cf5 `Clients`\cf8  (\cf5 `id`\cf8 ) 
-\f1\b \cf3 ON
-\f0\b0 \cf8  
-\f1\b \cf3 DELETE
-\f0\b0 \cf8  
-\f1\b \cf5 CASCADE
-\f0\b0 \cf0 \
-\cf8 );\cf7 \
-\
-\
+CREATE TABLE `Clients` (
+  `id` int NOT NULL AUTO_INCREMENT UNIQUE,
+  `firstName` varchar(30) NOT NULL,
+  `lastName` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `DOB` date NOT NULL,
+  `street` varchar(100)NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `zip` varchar(10) NOT NULL,
+  `sex` varchar(1) DEFAULT NULL,
+  `photo` blob  DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
 
-\f1\b \cf3 Create
-\f0\b0 \cf4  
-\f1\b \cf3 view
-\f0\b0 \cf4  \cf9 clientaccounts\cf4  
-\f1\b \cf3 AS
-\f0\b0 \cf0 \
+-- TestAdvanced.Accounts definition
 
-\f1\b \cf3 Select
-\f0\b0 \cf4  \cf9 c\cf4 .\cf9 id\cf4 , \cf9 c\cf4 .\cf9 firstName\cf4 , \cf9 c\cf4 .\cf9 lastname\cf4 , \cf9 c\cf4 .\cf9 email\cf4 , \cf9 c\cf4 .\cf9 DOB\cf4 , \cf9 c\cf4 .\cf9 street\cf4 ,\cf0 \
-\pard\pardeftab720\partightenfactor0
-\cf9 c\cf4 .\cf9 city\cf4 , \cf9 c\cf4 .\cf9 zip\cf4 , \cf9 c\cf4 .\cf9 sex\cf4 , \cf9 c\cf4 .\cf9 photo\cf4 , \cf9 a\cf4 .\cf9 accountNumber\cf4 , \cf9 a\cf4 .\cf9 pin\cf4 , \cf9 a\cf4 .\cf9 balance\cf4 , \cf9 a\cf4 .\cf9 emp_id\cf4  
-\f1\b \cf3 From
-\f0\b0 \cf4  \cf9 Clients\cf4  \cf9 c\cf0 \
-\pard\pardeftab720\partightenfactor0
+CREATE TABLE `Accounts` (
+  `id` int NOT NULL AUTO_INCREMENT UNIQUE,
+  `accountNumber` varchar(12) NOT NULL UNIQUE,
+  `PIN` varchar(4) NOT NULL,
+  `emp_id` int DEFAULT NULL,
+  `balance` int DEFAULT NULL,
+  PRIMARY KEY (`accountNumber`),
+  CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`emp_id`) REFERENCES `Employees` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `accounts_ibfk_2` FOREIGN KEY (`id`) REFERENCES `Clients` (`id`) ON DELETE CASCADE
+);
 
-\f1\b \cf3 LEFT
-\f0\b0 \cf4  
-\f1\b \cf3 JOIN
-\f0\b0 \cf4  \cf9 Accounts\cf4  \cf9 a\cf0 \
 
-\f1\b \cf3 ON
-\f0\b0 \cf4  \cf9 c\cf4 .\cf9 id\cf4  = \cf9 a\cf4 .\cf9 id\cf7 ;\
-}
+Create view clientaccounts AS
+Select c.id, c.firstName, c.lastname, c.email, c.DOB, c.street,
+c.city, c.zip, c.sex, c.photo, a.accountNumber, a.pin, a.balance, a.emp_id From Clients c
+LEFT JOIN Accounts a
+ON c.id = a.id;

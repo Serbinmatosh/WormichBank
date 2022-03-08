@@ -11,7 +11,7 @@ import view.Login;
  *
  * @author serbinmatosh
  */
-public class MainView {
+public class MainClient {
 
         public static void main(String args[]) {
         /* Set the Nimbus look and feel */

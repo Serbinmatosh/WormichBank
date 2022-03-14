@@ -2351,6 +2351,11 @@ public class MainFrame extends javax.swing.JFrame {
         txtUserEmail.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtUserEmail.setForeground(new java.awt.Color(0, 0, 0));
         txtUserEmail.setBorder(null);
+        txtUserEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUserEmailKeyTyped(evt);
+            }
+        });
         pnlSettings.add(txtUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 233, 290, 35));
 
         txtUserDOB.setBackground(new java.awt.Color(255, 255, 255));
@@ -2374,6 +2379,11 @@ public class MainFrame extends javax.swing.JFrame {
         txtUserPassword.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtUserPassword.setForeground(new java.awt.Color(0, 0, 0));
         txtUserPassword.setBorder(null);
+        txtUserPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUserPasswordKeyTyped(evt);
+            }
+        });
         pnlSettings.add(txtUserPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 442, 290, 35));
 
         cbUserSex.setBackground(new java.awt.Color(42, 39, 41));
@@ -2840,14 +2850,19 @@ public class MainFrame extends javax.swing.JFrame {
     private void btnAuthorizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuthorizeActionPerformed
         try {
             if (!txtAuthFN.getText().equals("") && !txtAuthLN.getText().equals("")
-                && !txtAuthEmail.getText().equals("") && txtUserEmail.getText().contains("@")
+                && !txtAuthEmail.getText().equals("") && txtAuthEmail.getText().contains("@")
                 && !txtAuthDOB.getText().equals("") && !cbSexUserAuth.getSelectedItem().toString().equals("") 
                 && !txtAuthUsername.getText().equals("") && !txtAuthPassword.getText().equals("") 
-                && !cbAuthorizationSet.getSelectedItem().toString().equals("") && photo != null) {
+                && !cbAuthorizationSet.getSelectedItem().toString().equals("") && txtAuthLN.getText().length() < 30
+                && txtAuthFN.getText().length() < 30 && txtAuthPassword.getText().length() < 30 
+                && txtAuthUsername.getText().length() < 30 && txtAuthEmail.getText().length() < 60) {
 
                 Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(txtAuthDOB.getText());
                 this.scopeOfAction = "ForReal";
                 doutMain.writeUTF("NN34jso#$%sjifr!!3zz");
+            } else if (!txtAuthEmail.getText().contains("@")){
+                jLabel49.setForeground(Color.red);
+                jLabel49.setText("Email has to contain the '@' symbol!");
             } else {
                 jLabel48.setForeground(Color.red);
                 jLabel48.setText("AUTHORIZATION FAILED!");
@@ -2857,9 +2872,9 @@ public class MainFrame extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-                    jLabel49.setForeground(Color.red);
-                    jLabel49.setText("Please use YYYY-MM-DD format for the Date of Birth");
-                }
+            jLabel49.setForeground(Color.red);
+            jLabel49.setText("Please use YYYY-MM-DD format for the Date of Birth");
+        }
     }//GEN-LAST:event_btnAuthorizeActionPerformed
 
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
@@ -2933,6 +2948,9 @@ public class MainFrame extends javax.swing.JFrame {
                 Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(txtUserDOB.getText());
                 this.scopeOfAction = "ForReal";
                 doutMain.writeUTF("Na487&!?M00#$%!!-@#%");
+            } else if (!txtUserEmail.getText().contains("@")){
+                jLabel45.setForeground(Color.red);
+                jLabel45.setText("Email has to contain the '@' symbol!");
             } else {
                 jLabel44.setForeground(Color.red);
                 jLabel44.setText("UPDATE FAILED!");
@@ -2942,9 +2960,9 @@ public class MainFrame extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-                    jLabel45.setForeground(Color.red);
-                    jLabel45.setText("Please use YYYY-MM-DD format for the Date of Birth");
-                }
+            jLabel45.setForeground(Color.red);
+            jLabel45.setText("Please use YYYY-MM-DD format for the Date of Birth");
+        }
 
     }//GEN-LAST:event_btnSaveSettingsActionPerformed
 
@@ -3200,15 +3218,17 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAuthLNKeyTyped
 
     private void txtUserFirstNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserFirstNameKeyTyped
+        boolean max = txtUserFirstName.getText().length() > 30;
         char c = evt.getKeyChar();
-        if (!Character.isLetter(c)) {
+        if (max || !Character.isDigit(c)) {
             evt.consume();
         }
     }//GEN-LAST:event_txtUserFirstNameKeyTyped
 
     private void txtUserLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserLastNameKeyTyped
+        boolean max = txtUserLastName.getText().length() > 30;
         char c = evt.getKeyChar();
-        if (!Character.isLetter(c)) {
+        if (max || !Character.isDigit(c)) {
             evt.consume();
         }
     }//GEN-LAST:event_txtUserLastNameKeyTyped
@@ -3229,6 +3249,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void txtUserUsernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserUsernameKeyTyped
         txtUserUsername.setForeground(Color.BLACK);
+        boolean max = txtUserUsername.getText().length() > 30;
+        if (max) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtUserUsernameKeyTyped
 
     private void jLabel25MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseMoved
@@ -3774,8 +3798,24 @@ public class MainFrame extends javax.swing.JFrame {
             lblAuthImage.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(Exception e) {
+            e.getMessage();
         }
     }//GEN-LAST:event_btnAuthImageActionPerformed
+
+    private void txtUserPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserPasswordKeyTyped
+        boolean max = txtUserPassword.getText().length() > 30;
+        if (max) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtUserPasswordKeyTyped
+
+    private void txtUserEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserEmailKeyTyped
+        boolean max = txtUserEmail.getText().length() > 30;
+        if (max) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtUserEmailKeyTyped
 
     public boolean checkExistence(String scopeOfCheck, JTextField textField) {
             try {                
@@ -3952,8 +3992,12 @@ public class MainFrame extends javax.swing.JFrame {
                 doutMain.writeUTF(txtAuthDOB.getText());
                 doutMain.writeUTF(cbSexUserAuth.getSelectedItem().toString());
                 doutMain.writeUTF(cbAuthorizationSet.getSelectedItem().toString());
-                doutMain.writeInt(photo.length);
-                doutMain.write(photo);
+                if(photo != null) {
+                    doutMain.writeInt(photo.length);
+                    doutMain.write(photo);
+                } else {
+                    doutMain.writeInt(0);
+                }    
             } catch (IOException ex) {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -3973,8 +4017,7 @@ public class MainFrame extends javax.swing.JFrame {
                     doutMain.write(photo);
                 } else {
                     doutMain.writeInt(0);
-                }
-                
+                }          
             } catch (IOException ex) {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }

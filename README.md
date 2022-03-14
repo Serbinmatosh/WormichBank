@@ -8,6 +8,8 @@ The software enables every employee to handle clients' account actions such as:
 2. Withdrawal
 3. Transfer
 4. Request
+
+
 The employees are also able use the Chat where they can:
 1. Go Online or Offline
 2. See who else is online

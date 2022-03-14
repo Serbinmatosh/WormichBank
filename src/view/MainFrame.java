@@ -2391,7 +2391,7 @@ public class MainFrame extends javax.swing.JFrame {
         btnUpdateImage.setBackground(new java.awt.Color(42, 39, 41));
         btnUpdateImage.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btnUpdateImage.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdateImage.setText("Choose Image");
+        btnUpdateImage.setText("Upload Image");
         btnUpdateImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateImageActionPerformed(evt);
@@ -2928,7 +2928,7 @@ public class MainFrame extends javax.swing.JFrame {
                 && !txtUserUsername.getText().equals("") && !txtUserPassword.getText().equals("") 
                 && txtUserUsername.getText().length() < 30 && txtUserPassword.getText().length() < 30
                 && txtUserFirstName.getText().length() < 30 && txtUserLastName.getText().length() < 30
-                    && txtUserEmail.getText().length() < 60 && photo != null) {
+                    && txtUserEmail.getText().length() < 60) {
 
                 Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(txtUserDOB.getText());
                 this.scopeOfAction = "ForReal";
@@ -3703,6 +3703,8 @@ public class MainFrame extends javax.swing.JFrame {
             lblUpdateImage.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(Exception e) {
+            e.getMessage();
         }
     }//GEN-LAST:event_btnUpdateImageActionPerformed
 
@@ -3966,8 +3968,13 @@ public class MainFrame extends javax.swing.JFrame {
                 doutMain.writeUTF(txtUserDOB.getText());
                 doutMain.writeUTF(cbUserSex.getSelectedItem().toString());
                 doutMain.writeUTF(user.getAuthorization());
-                doutMain.writeInt(photo.length);
-                doutMain.write(photo);
+                if(photo != null) {
+                    doutMain.writeInt(photo.length);
+                    doutMain.write(photo);
+                } else {
+                    doutMain.writeInt(0);
+                }
+                
             } catch (IOException ex) {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }

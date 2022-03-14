@@ -748,8 +748,8 @@ public class Server {
                 byte[] photo = new byte[length];
                 din.readFully(photo, 0, photo.length);
                 return new User(id, username1, password, firstName, lastName, email, DOB, sex, authorization, photo);
-            }
-            
+            } 
+            return new User(id, username1, password, firstName, lastName, email, DOB, sex, authorization, null);          
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {

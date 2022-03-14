@@ -181,7 +181,6 @@ public class MainFrame extends javax.swing.JFrame {
         pnlUserProfile = new javax.swing.JPanel();
         lblUserImage = new javax.swing.JLabel();
         lblUserIconFNskrt = new javax.swing.JLabel();
-        lblMaleIcon = new javax.swing.JLabel();
         pnlNavChat = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -754,9 +753,6 @@ public class MainFrame extends javax.swing.JFrame {
         lblUserIconFNskrt.setForeground(new java.awt.Color(204, 204, 204));
         lblUserIconFNskrt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pnlUserProfile.add(lblUserIconFNskrt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 180, -1));
-
-        lblMaleIcon.setBackground(new java.awt.Color(42, 39, 41));
-        pnlUserProfile.add(lblMaleIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5, 140, 140));
 
         pnlNavigation.add(pnlUserProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 210));
 
@@ -4520,9 +4516,11 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             cbUserSex.setSelectedIndex(2);
         }
+        if(user.getPhoto() != null) {
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(user.getPhoto()).getImage()
                 .getScaledInstance(lblUpdateImage.getWidth(), lblUpdateImage.getHeight(), Image.SCALE_SMOOTH));
         lblUpdateImage.setIcon(imageIcon);
+        }
         jLabel44.setText("");
 
     }
@@ -4604,8 +4602,12 @@ public class MainFrame extends javax.swing.JFrame {
     public void setProfile(User user) {
         if (user.getPhoto() == null) {
             if (user.getSex().equals("M")) {
-                lblUserImage.setVisible(false);
-            }  
+                lblUserImage.setVisible(true);
+                lblUserImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/folder/male-icon.png")));
+            } else {
+                lblUserImage.setVisible(true);
+                lblUserImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/folder/female-icon.png")));
+            } 
             lblUserIconFNskrt.setText(user.getFirstName() + " " + user.getLastName().charAt(0) + ".");
             if (user.getAuthorization().equals("2")) {
                 pnlNavAuthorize.setVisible(false);
@@ -4877,7 +4879,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblFemaleClient;
     private javax.swing.JLabel lblHomeWelcome;
     private javax.swing.JLabel lblMaleClient;
-    private javax.swing.JLabel lblMaleIcon;
     private javax.swing.JLabel lblNumAcctOpen;
     private javax.swing.JLabel lblNumTransPerf;
     private javax.swing.JLabel lblRewardLevel;

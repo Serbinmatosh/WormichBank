@@ -10,12 +10,14 @@ The software enables every employee to handle clients' account actions such as:
 4. Request
 
 
-The employees are also able use the Chat where they can:
+The employees are also able to use the Chat where they can:
 1. Go Online or Offline
 2. See who else is online
 3. Chat privately with only 1 person
 4. Chat publicly with everyone
-During the usage of the chat part of the application, the employees are not able to do anything else until they sign out.
+
+
+While Online in Chat, the employees are not able to do anything else until they go Offline.
 
 In addition, employees who are also managers have the additional option to authorize accounts for newly hired employees.
 

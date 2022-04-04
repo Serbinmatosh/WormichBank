@@ -102,7 +102,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-        if (!txtUsername.getText().equalsIgnoreCase("") && !jPasswordField1.getText().equals("")) {
+        String password = String.valueOf(jPasswordField1.getPassword());
+        if (!txtUsername.getText().equalsIgnoreCase("") && !password.equals("")) {
             accept();
         } else {
             JOptionPane.showMessageDialog(this, "Username or Password Cannot be Empty");
@@ -110,8 +111,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+        String password = String.valueOf(jPasswordField1.getPassword());
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (!txtUsername.getText().equalsIgnoreCase("") && !jPasswordField1.getText().equals("")) {
+            if (!txtUsername.getText().equalsIgnoreCase("") && !password.equals("")) {
                 accept();
             } else {
                 JOptionPane.showMessageDialog(this, "Username or Password Cannot be Empty");
@@ -130,7 +132,7 @@ public class Login extends javax.swing.JFrame {
 
     public void accept() {
         String username = txtUsername.getText();
-        String password = jPasswordField1.getText();
+        String password = String.valueOf(jPasswordField1.getPassword());
         try {
             socket = new Socket("Localhost", 2089);
             DataInputStream din = new DataInputStream(socket.getInputStream());

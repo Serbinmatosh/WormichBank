@@ -2806,7 +2806,8 @@ public class MainFrame extends javax.swing.JFrame {
                 && !txtEmail.getText().equals("") && !txtDOB.getText().equals("")
                 && !cbSex.getSelectedItem().toString().equals("") && !txtAcctSearch.getText().equals("")
                 && !txtZip.getText().equals("") && !txtStreet.getText().equals("")
-                && !txtCity.getText().equals("") && !txtPIN.getText().equals("")) {
+                && !txtCity.getText().equals("") && txtPIN.getText().length() == 4
+                    && txtAcctSearch.getText().length() == 12) {
                 
                 Date dob = new SimpleDateFormat("yyyy-MM-dd").parse(txtDOB.getText());
                  
